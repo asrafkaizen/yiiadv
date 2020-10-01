@@ -46,6 +46,7 @@ class CountrySearch extends Country
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => array('pageSize' => 5),
         ]);
 
         $this->load($params);
