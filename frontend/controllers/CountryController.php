@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Country;
-use frontend\models\CountrySearch;
+use common\models\Country;
+use common\models\CountrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

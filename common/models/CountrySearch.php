@@ -1,13 +1,13 @@
 <?php
 
-namespace frontend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Country;
+use common\models\Country;
 
 /**
- * CountrySearch represents the model behind the search form of `app\models\Country`.
+ * CountrySearch represents the model behind the search form of `common\models\Country`.
  */
 class CountrySearch extends Country
 {

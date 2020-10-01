@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Country;
+use common\models\Student;
 
 /**
- * CountrySearch represents the model behind the search form of `backend\models\Country`.
+ * StudentSearch represents the model behind the search form of `common\models\Student`.
  */
-class CountrySearch extends Country
+class StudentSearch extends Student
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CountrySearch extends Country
     public function rules()
     {
         return [
-            [['code', 'name'], 'safe'],
-            [['population', 'id'], 'integer'],
+            [['id', 'studentid', 'country'], 'integer'],
+            [['name', 'course'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CountrySearch extends Country
      */
     public function search($params)
     {
-        $query = Country::find();
+        $query = Student::find();
 
         // add conditions that should always apply here
 
@@ -58,12 +58,13 @@ class CountrySearch extends Country
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'population' => $this->population,
             'id' => $this->id,
+            'studentid' => $this->studentid,
+            'country' => $this->country,
         ]);
 
-        $query->andFilterWhere(['like', 'code', $this->code])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'course', $this->course]);
 
         return $dataProvider;
     }
