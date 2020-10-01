@@ -68,24 +68,21 @@ class SiteController extends Controller
      *
      * @return string
      */
+    //step5=changed actionLogin() to below
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $this->layout = 'blank';
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            $model->password = '';
-
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
+       if (!\Yii::$app->user->isGuest) {
+          return $this->goHome();
+       }
+    
+       $model = new LoginForm();
+       if ($model->load(Yii::$app->request->post()) && $model->loginAdmin()) {
+          return $this->goBack();
+       } else {
+           return $this->render('login', [
+              'model' => $model,
+           ]);
+       }
     }
 
     /**
